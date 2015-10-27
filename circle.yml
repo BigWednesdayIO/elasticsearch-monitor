@@ -1,0 +1,21 @@
+machine:
+  services:
+    - docker
+  python:
+    version: 2.7.3
+
+checkout:
+  post:
+    - git submodule update --init
+
+dependencies:
+  cache_directories:
+    - ~/google-cloud-sdk
+  override:
+    - scripts/ensure_glcoud_installed.sh
+
+deployment:
+  prod:
+    branch: production
+    commands:
+      - scripts/rolling_deploy.sh elasticsearch-monitor app=elasticsearch-monitor production ${PWD} ${PWD}/kubernetes/rc.json
