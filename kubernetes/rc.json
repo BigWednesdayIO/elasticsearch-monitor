@@ -27,6 +27,10 @@
               {
                 "name": "GCLOUD_MONITORING_API_KEY",
                 "value": "{{GCLOUD_MONITORING_API_KEY}}"
+              },
+              {
+                "name": "ELASTICSEARCH_STATS_URL",
+                "value": "{{ELASTICSEARCH_STATS_URL}}"
               }
             ]
           }
