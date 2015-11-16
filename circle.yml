@@ -3,6 +3,8 @@ machine:
     - docker
   python:
     version: 2.7.3
+  node:
+    version: 4.1.0
 
 checkout:
   post:
@@ -13,9 +15,10 @@ dependencies:
     - ~/google-cloud-sdk
   override:
     - scripts/ensure_glcoud_installed.sh
+    - npm install -g json
 
 deployment:
   prod:
     branch: production
     commands:
-      - scripts/rolling_deploy.sh elasticsearch-monitor app=elasticsearch-monitor production ${PWD} ${PWD}/kubernetes/rc.json
+      - scripts/rolling_deploy.sh elasticsearch-monitor app=elasticsearch-monitor production ${PWD} ${PWD}/kubernetes/rc.json ${PWD}/kubernetes/service.json
