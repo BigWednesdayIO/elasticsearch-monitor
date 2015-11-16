@@ -17,6 +17,10 @@ dependencies:
     - scripts/ensure_glcoud_installed.sh
     - npm install -g json
 
+test:
+  override:
+    - echo
+
 deployment:
   prod:
     branch: production
