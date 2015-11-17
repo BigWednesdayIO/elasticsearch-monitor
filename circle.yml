@@ -3,8 +3,6 @@ machine:
     - docker
   python:
     version: 2.7.3
-  node:
-    version: 4.1.0
 
 checkout:
   post:
@@ -14,8 +12,7 @@ dependencies:
   cache_directories:
     - ~/google-cloud-sdk
   override:
-    - scripts/ensure_glcoud_installed.sh
-    - npm install -g json
+    - scripts/install_deployment_tools.sh
 
 test:
   override:
