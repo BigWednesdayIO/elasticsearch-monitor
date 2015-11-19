@@ -12,10 +12,14 @@ dependencies:
   cache_directories:
     - ~/google-cloud-sdk
   override:
-    - scripts/ensure_glcoud_installed.sh
+    - scripts/install_deployment_tools.sh
+
+test:
+  override:
+    - echo
 
 deployment:
   prod:
     branch: production
     commands:
-      - scripts/rolling_deploy.sh elasticsearch-monitor app=elasticsearch-monitor production ${PWD} ${PWD}/kubernetes/rc.json
+      - scripts/rolling_deploy.sh elasticsearch-monitor app=elasticsearch-monitor production ${PWD} ${PWD}/kubernetes/rc.json ${PWD}/kubernetes/service.json
